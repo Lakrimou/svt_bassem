@@ -1,0 +1,311 @@
+<?php
+
+namespace Svt\BassemBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Serie
+ *
+ * @ORM\Table(name="serie")
+ * @ORM\Entity(repositoryClass="Svt\BassemBundle\Repository\SerieRepository")
+ */
+class Serie
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nameSerie", type="string", length=255)
+     */
+    private $nameSerie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255)
+     */
+    private $author;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreationSerie", type="datetime")
+     */
+    private $dateCreationSerie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SerieContent", type="text", nullable=true)
+     */
+    private $serieContent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgUrlSerie", type="string", length=255, nullable=true)
+     */
+    private $imgUrlSerie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgAltSerie", type="string", length=255, nullable=true)
+     */
+    private $imgAltSerie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pdfUrl", type="string", length=255, nullable=true)
+     */
+    private $pdfUrl;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Svt\BassemBundle\Entity\Section", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $section;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Svt\BassemBundle\Entity\Classe", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classe;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nameSerie
+     *
+     * @param string $nameSerie
+     *
+     * @return Serie
+     */
+    public function setNameSerie($nameSerie)
+    {
+        $this->nameSerie = $nameSerie;
+
+        return $this;
+    }
+
+    /**
+     * Get nameSerie
+     *
+     * @return string
+     */
+    public function getNameSerie()
+    {
+        return $this->nameSerie;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     *
+     * @return Serie
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set dateCreationSerie
+     *
+     * @param \DateTime $dateCreationSerie
+     *
+     * @return Serie
+     */
+    public function setDateCreationSerie($dateCreationSerie)
+    {
+        $this->dateCreationSerie = $dateCreationSerie;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreationSerie
+     *
+     * @return \DateTime
+     */
+    public function getDateCreationSerie()
+    {
+        return $this->dateCreationSerie;
+    }
+
+    /**
+     * Set serieContent
+     *
+     * @param string $serieContent
+     *
+     * @return Serie
+     */
+    public function setSerieContent($serieContent)
+    {
+        $this->serieContent = $serieContent;
+
+        return $this;
+    }
+
+    /**
+     * Get serieContent
+     *
+     * @return string
+     */
+    public function getSerieContent()
+    {
+        return $this->serieContent;
+    }
+
+    /**
+     * Set imgUrlSerie
+     *
+     * @param string $imgUrlSerie
+     *
+     * @return Serie
+     */
+    public function setImgUrlSerie($imgUrlSerie)
+    {
+        $this->imgUrlSerie = $imgUrlSerie;
+
+        return $this;
+    }
+
+    /**
+     * Get imgUrlSerie
+     *
+     * @return string
+     */
+    public function getImgUrlSerie()
+    {
+        return $this->imgUrlSerie;
+    }
+
+    /**
+     * Set imgAltSerie
+     *
+     * @param string $imgAltSerie
+     *
+     * @return Serie
+     */
+    public function setImgAltSerie($imgAltSerie)
+    {
+        $this->imgAltSerie = $imgAltSerie;
+
+        return $this;
+    }
+
+    /**
+     * Get imgAltSerie
+     *
+     * @return string
+     */
+    public function getImgAltSerie()
+    {
+        return $this->imgAltSerie;
+    }
+
+    /**
+     * Set pdfUrl
+     *
+     * @param string $pdfUrl
+     *
+     * @return Serie
+     */
+    public function setPdfUrl($pdfUrl)
+    {
+        $this->pdfUrl = $pdfUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get pdfUrl
+     *
+     * @return string
+     */
+    public function getPdfUrl()
+    {
+        return $this->pdfUrl;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Svt\BassemBundle\Entity\Section $section
+     *
+     * @return Serie
+     */
+    public function setSection(\Svt\BassemBundle\Entity\Section $section)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Svt\BassemBundle\Entity\Section
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param \Svt\BassemBundle\Entity\Classe $classe
+     *
+     * @return Serie
+     */
+    public function setClasse(\Svt\BassemBundle\Entity\Classe $classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \Svt\BassemBundle\Entity\Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+}

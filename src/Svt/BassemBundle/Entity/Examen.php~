@@ -1,0 +1,341 @@
+<?php
+
+namespace Svt\BassemBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Examen
+ *
+ * @ORM\Table(name="examen")
+ * @ORM\Entity(repositoryClass="Svt\BassemBundle\Repository\ExamenRepository")
+ */
+class Examen
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nameExamen", type="string", length=255)
+     */
+    private $nameExamen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="authorExamen", type="string", length=255)
+     */
+    private $authorExamen;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="yearExamen", type="date")
+     */
+    private $yearExamen;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreationExamen", type="datetime")
+     */
+    private $dateCreationExamen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ExamenContent", type="text", nullable=true)
+     */
+    private $examenContent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgUrlExamen", type="string", length=255, nullable=true)
+     */
+    private $imgUrlExamen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgAltExamen", type="string", length=255, nullable=true)
+     */
+    private $imgAltExamen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pdfUrlExamen", type="string", length=255, nullable=true)
+     */
+    private $pdfUrlExamen;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Svt\BassemBundle\Entity\Section", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $section;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Svt\BassemBundle\Entity\Classe", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classe;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nameExamen
+     *
+     * @param string $nameExamen
+     *
+     * @return Examen
+     */
+    public function setNameExamen($nameExamen)
+    {
+        $this->nameExamen = $nameExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get nameExamen
+     *
+     * @return string
+     */
+    public function getNameExamen()
+    {
+        return $this->nameExamen;
+    }
+
+    /**
+     * Set authorExamen
+     *
+     * @param string $authorExamen
+     *
+     * @return Examen
+     */
+    public function setAuthorExamen($authorExamen)
+    {
+        $this->authorExamen = $authorExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get authorExamen
+     *
+     * @return string
+     */
+    public function getAuthorExamen()
+    {
+        return $this->authorExamen;
+    }
+
+    /**
+     * Set yearExamen
+     *
+     * @param \DateTime $yearExamen
+     *
+     * @return Examen
+     */
+    public function setYearExamen($yearExamen)
+    {
+        $this->yearExamen = $yearExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get yearExamen
+     *
+     * @return \DateTime
+     */
+    public function getYearExamen()
+    {
+        return $this->yearExamen;
+    }
+
+    /**
+     * Set dateCreationExamen
+     *
+     * @param \DateTime $dateCreationExamen
+     *
+     * @return Examen
+     */
+    public function setDateCreationExamen($dateCreationExamen)
+    {
+        $this->dateCreationExamen = $dateCreationExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreationExamen
+     *
+     * @return \DateTime
+     */
+    public function getDateCreationExamen()
+    {
+        return $this->dateCreationExamen;
+    }
+
+    /**
+     * Set examenContent
+     *
+     * @param string $examenContent
+     *
+     * @return Examen
+     */
+    public function setExamenContent($examenContent)
+    {
+        $this->examenContent = $examenContent;
+
+        return $this;
+    }
+
+    /**
+     * Get examenContent
+     *
+     * @return string
+     */
+    public function getExamenContent()
+    {
+        return $this->examenContent;
+    }
+
+    /**
+     * Set imgUrlExamen
+     *
+     * @param string $imgUrlExamen
+     *
+     * @return Examen
+     */
+    public function setImgUrlExamen($imgUrlExamen)
+    {
+        $this->imgUrlExamen = $imgUrlExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get imgUrlExamen
+     *
+     * @return string
+     */
+    public function getImgUrlExamen()
+    {
+        return $this->imgUrlExamen;
+    }
+
+    /**
+     * Set imgAltExamen
+     *
+     * @param string $imgAltExamen
+     *
+     * @return Examen
+     */
+    public function setImgAltExamen($imgAltExamen)
+    {
+        $this->imgAltExamen = $imgAltExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get imgAltExamen
+     *
+     * @return string
+     */
+    public function getImgAltExamen()
+    {
+        return $this->imgAltExamen;
+    }
+
+    /**
+     * Set pdfUrlExamen
+     *
+     * @param string $pdfUrlExamen
+     *
+     * @return Examen
+     */
+    public function setPdfUrlExamen($pdfUrlExamen)
+    {
+        $this->pdfUrlExamen = $pdfUrlExamen;
+
+        return $this;
+    }
+
+    /**
+     * Get pdfUrlExamen
+     *
+     * @return string
+     */
+    public function getPdfUrlExamen()
+    {
+        return $this->pdfUrlExamen;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Svt\BassemBundle\Entity\Section $section
+     *
+     * @return Examen
+     */
+    public function setSection(\Svt\BassemBundle\Entity\Section $section)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Svt\BassemBundle\Entity\Section
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param \Svt\BassemBundle\Entity\Classe $classe
+     *
+     * @return Examen
+     */
+    public function setClasse(\Svt\BassemBundle\Entity\Classe $classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \Svt\BassemBundle\Entity\Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+}

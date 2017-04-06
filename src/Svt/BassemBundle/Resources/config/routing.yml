@@ -1,0 +1,35 @@
+svt_bassem_homepage:
+    path:     /
+    defaults: { _controller: SvtBassemBundle:Admin:index }
+
+svt_bassem_classe:
+    path:    /classes/{id}
+    defaults: { _controller: SvtBassemBundle:Admin:classe }
+    requirements:
+        id: \d
+
+svt_bassem_classeSpec:
+    path:    /classe/{classeName}/{id}/{sectionName}/{idSection}
+    defaults: { _controller: SvtBassemBundle:Admin:classeSpec }
+    requirements:
+        id: \d
+        idSection: \d
+
+svt_bassem_cours:
+    path:    /classe/{classeName}/{id}/{sectionName}/{idSection}/{categoryName}/{categoryId}
+    defaults: { _controller: SvtBassemBundle:Admin:cours }
+    requirements:
+        id: \d
+        idSection: \d
+        categoryId: \d
+
+
+svt_bassem_viewCourse:
+    path:    /cours/{id}/{idSection}/{categoryId}/{coursId}
+    defaults: { _controller: SvtBassemBundle:Admin:viewCours }
+    requirements:
+        id: \d
+        idSection: \d
+        categoryId: \d
+        coursId: \d
+

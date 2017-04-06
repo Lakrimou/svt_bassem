@@ -1,0 +1,23 @@
+svt_bassem_ajouterCours:
+    path:    /ajouterCours
+    defaults: { _controller: SvtAdminBundle:Administration:ajouterCours }
+
+svt_bassem_ajouterSerie:
+    path:    /ajouterSerie
+    defaults: { _controller: SvtBassemBundle:Admin:ajouterSerie }
+
+svt_bassem_ajouterExamen:
+    path:    /ajouterExamen
+    defaults: { _controller: SvtBassemBundle:Admin:ajouterExamen }
+
+svt_bassem_modifierCours:
+    path:    /modifierCours/{id}
+    defaults: { _controller: SvtBassemBundle:Admin:modifierCours }
+
+svt_bassem_modifierSerie:
+    path:    /modifierSerie/{id}
+    defaults: { _controller: SvtBassemBundle:Admin:modifierSerie }
+
+svt_bassem_modifierExamen:
+    path:    /modifierExamen/{id}
+    defaults: { _controller: SvtBassemBundle:Admin:modifierExamen }

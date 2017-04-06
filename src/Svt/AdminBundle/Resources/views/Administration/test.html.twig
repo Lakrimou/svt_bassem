@@ -1,0 +1,337 @@
+{% extends "::layoutAdmin.html.twig" %}
+{% block stylesheetJavascript %}
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block body %}
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <section id="content">
+
+        <div class="page page-forms-wizard">
+
+            <div class="pageheader">
+
+                <h2>Form Wizard <span>// You can place subtitle here</span></h2>
+
+                <div class="page-bar">
+
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a href="index.html"><i class="fa fa-home"></i> Minovate</a>
+                        </li>
+                        <li>
+                            <a href="#">Form Stuff</a>
+                        </li>
+                        <li>
+                            <a href="form-wizard.html">Form Wizard</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+            {#<div class="pagecontent">
+
+                <div id="rootwizard" class="tab-container tab-wizard">
+                    <ul class="nav nav-tabs nav-justified nav-pills">
+                        <li><a href="#tab1" data-toggle="tab">Choix du sélection <span class="badge badge-default pull-right wizard-step">1</span></a></li>
+                        <li><a href="#tab2" data-toggle="tab">Choix du classe<span class="badge badge-default pull-right wizard-step">2</span></a></li>
+                        <li><a href="#tab3" data-toggle="tab">Choix du catégorie<span class="badge badge-default pull-right wizard-step">3</span></a></li>
+                        <li><a href="#tab4" data-toggle="tab">Choix du cours<span class="badge badge-default pull-right wizard-step">4</span></a></li>
+                        <li><a href="#tab5" data-toggle="tab">Ajout du document<span class="badge badge-default pull-right wizard-step">5</span></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tab1">
+
+                            {{ form_start(form, {'name':'step1'}, {'attr':{'role':'form'}}) }}
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                        <div class="row">
+                                            <div class="form-group col-md-8 mb-0">
+                                                {{ form_label(form.section, "Choisir une section", {'label_attr':{'class':'control-label'}}) }}
+                                                {{ form_widget(form.section, {'attr':{'class':'form-control'}}) }}
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                            </div>
+                            </form>
+
+
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            {{ form_start(form, {'name':'step2'}, {'attr':{'role':'form'}}) }}
+                            <div class="row">
+                                <div class="form-group col-md-6">
+
+                                    <div class="row">
+                                    <div class="form-group col-md-8 mb-0">
+                                        {{ form_label(form.classe, "Choisir une classe", {'label_attr':{'class':'control-label'}}) }}
+                                        {{ form_widget(form.classe, {'attr':{'class':'form-control'}}, {'required':'required'}) }}
+                                    </div></div></div></div>
+                            </form>
+
+
+                        </div>
+                        <div class="tab-pane" id="tab3">
+
+                            {{ form_start(form, {'name':'step3'}, {'attr':{'role':'form'}}) }}
+
+                                <h4 class="custom-font"><strong>Primary</strong> School</h4>
+
+                                <div class="row">
+                                    <div class="form-group col-md-4 mb-0">
+                                        <label for="pr-subject">Subject: </label>
+                                        <input type="text" name="pr-subject" id="pr-subject" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-4 mb-0">
+                                        <label for="pr-name">School name: </label>
+                                        <input type="text" name="pr-name" id="pr-name" class="form-control"
+                                               required>
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        <label for="prstart">Start Date: </label>
+                                        <input type="text" name="prstart" id="prstart" class="form-control" placeholder="YYYY-MM-DD"
+                                               pattern="/[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/">
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        <label for="prend">End Date: </label>
+                                        <input type="text" name="prend" id="prend" class="form-control" placeholder="YYYY-MM-DD"
+                                               pattern="/[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/">
+                                    </div>
+                                </div>
+                                <h4 class="custom-font"><strong>Secondary</strong> School</h4>
+                                <div class="row">
+                                    <div class="form-group col-md-4 mb-0">
+                                        <label for="sc-subject">Subject: </label>
+                                        <input type="text" name="sc-subject" id="sc-subject" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-4 mb-0">
+                                        <label for="sc-name">School name: </label>
+                                        <input type="text" name="sc-name" id="sc-name" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        <label for="scstart">Start Date: </label>
+                                        <input type="text" name="scstart" id="scstart" class="form-control" placeholder="YYYY-MM-DD"
+                                               pattern="/[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/">
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        <label for="scend">End Date: </label>
+                                        <input type="text" name="scend" id="scend" class="form-control" placeholder="YYYY-MM-DD"
+                                               pattern="/[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="qualification">Other qualification: </label>
+                                    <textarea class="form-control" rows="5" name="qualification" id="qualification"></textarea>
+                                </div>
+
+
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="tab4">
+
+                            {{ form_start(form, {'name':'step2'}, {'attr':{'role':'form'}}) }}
+
+                                <div class="row">
+                                    <div class="form-group col-md-6 mb-0">
+                                        <label for="email">Email: </label>
+                                        <input type="email" name="email" id="email" class="form-control"
+                                               required>
+                                    </div>
+                                    <div class="form-group col-md-6 mb-0">
+                                        <label for="phone">Phone: </label>
+                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="(XXX) XXXX XXX"
+                                               pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="web">Website: </label>
+                                    <input type="url" name="web" id="web" class="form-control" placeholder="http://">
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <div class="tab-pane" id="tab5">
+
+                            <p class="well">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</p>
+
+                            {{ form_start(form, {'name':'step2'}, {'attr':{'role':'form'}}) }}
+
+                                <div class="checkbox">
+                                    <label class="checkbox checkbox-custom">
+                                        <input type="checkbox" name="agree" id="agree"
+                                               required><i></i> I agree to the <a href class="text-info">Terms of Service</a>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox">
+                                    <label class="checkbox checkbox-custom">
+                                        <input type="checkbox" name="newsletter" id="newsletter"><i></i> Receive newsletter
+                                    </label>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <ul class="pager wizard">
+                            <li class="previous"><button class="btn btn-default">Previous</button></li>
+                            <li class="next"><button class="btn btn-default">Next</button></li>
+                            <li class="next finish" style="display:none;"><button class="btn btn-success">Finish</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>#}
+
+            <div class="row" style="padding: 15px;">
+                <div class="col-lg-12">
+                    <h2 class="text-center">Administration : <strong>Interface d'ajout du cours</strong></h2>
+                    <br/>
+                    <!-- Three columns of text below the carousel -->
+                    {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+                    {{ form_errors(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.section, "Choisir la section", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.section, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.classe, "Choisir une classe", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.classe, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.category, "Choisir la catégorie", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.category, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.cours, "Choisir le cours", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.cours, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.nomCours, "Nom du cours", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.nomCours, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.descriptionCours, "Descrition du cours", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.descriptionCours, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.contenuCours, "Contenu du cours", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.contenuCours, {'attr':{'class':'ckeditor'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.autheurCours, "Autheur du cours", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.autheurCours, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.imgUrlCours, "Image de publicité pour le cours", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.imgUrlCours, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.imgAltCours, "Nom de l'image de publicité pour le cours", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.imgAltCours, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.pdfUrlCours, "Cours pdf à publier", {'label_attr':{'class':'control-label'}}) }}
+                        {{ form_widget(form.pdfUrlCours, {'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+
+                        {{ form_widget(form.AjouterCours, {'attr':{'class':'btn btn-primary btn-lg'}}) }}
+                    </div>
+                    <footer>
+                        <p class="text-center">Propriétaire de site : {{ copyright }} &middot;</p>
+                        <div>
+                            <img src="" alt=""/>
+                            <img src="" alt=""/>
+                            <img src="" alt=""/>
+                            <img src="" alt=""/>
+                        </div>
+                        <p class="pull-right"><a href="#">Back to top</a></p>
+                        <p>&copy; 2017 Développé par {{ developper }}, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+                    </footer>
+                </div></div></div></section>
+{% endblock %}
+{% block vendorJavascript %}
+    <script src="{{ asset('assets/js/vendor/parsley/parsley.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/form-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script>{{ asset('assets/js/main.js') }}</script>
+    <script>
+        $(window).load(function(){
+
+            $('#rootwizard').bootstrapWizard({
+                onTabShow: function(tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    console.log('____Total_____ '+$total);
+                    var $current = index+1;
+                    console.log('_______$current_____ '+$current);
+
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if($current >= $total) {
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .finish').show();
+                        $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                    } else {
+                        $('#rootwizard').find('.pager .next').show();
+                        $('#rootwizard').find('.pager .finish').hide();
+                    }
+
+                },
+
+                onNext: function(tab, navigation, index) {
+
+                    var form = $('form[name="step'+ index +'"]');
+                    console.log('______formOnNext ______ '+form);
+                    console.log('______formOnNextIndex ______ '+index);
+
+                    form.parsley().validate();
+
+                    if (!form.parsley().isValid()) {
+                        return false;
+                    }
+
+                },
+
+                onTabClick: function(tab, navigation, index) {
+
+                    var form = $('form[name="step'+ (index+1) +'"]');
+                    console.log('______formOnTabClick ______ '+form)
+                    form.parsley().validate();
+
+                    if (!form.parsley().isValid()) {
+                        return false;
+                    }
+
+                }
+
+            });
+
+        });
+    </script>
+    <!--/ Page Specific Scripts -->
+
+
+
+
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    </script>
+{% endblock %}

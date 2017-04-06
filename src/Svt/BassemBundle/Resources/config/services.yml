@@ -1,0 +1,4 @@
+services:
+#    svt_bassem.example:
+#        class: Svt\BassemBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
