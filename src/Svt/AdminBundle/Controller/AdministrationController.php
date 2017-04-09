@@ -10,6 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdministrationController extends Controller
 {
+    public function indexAction()
+    {
+        return $this->render('SvtAdminBundle:Administration:index.html.twig');
+    }
     public function ajouterCoursAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();

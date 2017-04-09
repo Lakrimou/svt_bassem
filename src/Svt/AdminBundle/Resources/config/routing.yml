@@ -1,3 +1,7 @@
+svt_bassem_admin_homepage:
+    path:    /
+    defaults: { _controller: SvtAdminBundle:Administration:index }
+
 svt_bassem_ajouterCours:
     path:    /ajouterCours
     defaults: { _controller: SvtAdminBundle:Administration:ajouterCours }
