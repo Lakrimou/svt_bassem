@@ -1,0 +1,276 @@
+{% extends "::base.html.twig" %}
+{% block meta %}
+    <meta name="description" content="Pour contacter Monsieur Bassem Hezzi" />
+{% endblock %}
+{% block title %}{{ parent() }} | Contact{% endblock %}
+
+{% block body %}
+<div class="irs-header-topped">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 clearfix">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4 irs-padl-zero irs-pl-fftn" style="float: right;">
+                        <div class="irs-welcm-ht">
+                            <p class="irs-welcntxt"><i class="fa fa-phone"></i> Plus de question? Contactez nous <strong>
+                                    (+216) 20965188</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4"style="float: right;">
+                        <div class="irs-welcm-ht">
+                            <p class="irs-welcntxt"><i class="fa fa-map-marker"></i> Bassem Hezzi Bab khadhra Tunis, Tunisie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 clearfix">
+                <div class="irs-log-reg">
+                    {#<ul class="list-inline">
+                        <li><a href="#">
+                                <div data-toggle="modal" data-target=".bs-example-modal-lg"
+                                     data-whatever="@mdo">Login
+                                </div>
+                            </a>
+                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title text-center" id="exampleModalLabel">Login or
+                                                Register</h4>
+                                            <p class="irs-sign-reg-para text-center">Sign in or register today
+                                                in oorder to have access to all our courses or purchase new
+                                                ones.</p>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <form class="irs-login-form">
+                                                        <h3>Login <span class="flaticon-padlock"></span></h3>
+                                                        <p>Enter username and password to login:</p>
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" id="email"
+                                                                   placeholder="Email">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" class="form-control"
+                                                                   placeholder="Password">
+                                                        </div>
+                                                        <button type="submit"
+                                                                class="btn btn-default irs-button-styledark">
+                                                            Login to account
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form class="irs-reg-form">
+                                                        <h3>Register <span class="flaticon-key"></span></h3>
+                                                        <p>Join our community today:</p>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control"
+                                                                   id="exampleInputNamex"
+                                                                   placeholder="First Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control"
+                                                                   id="exampleInputNamexx"
+                                                                   placeholder="Last Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control"
+                                                                   id="exampleInputEmailx" placeholder="Email">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" class="form-control"
+                                                                   placeholder="Password">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" class="form-control"
+                                                                   placeholder="Repeat password">
+                                                        </div>
+                                                        <div class="form-group text-center">
+                                                            <button type="submit"
+                                                                    class="btn btn-default irs-button-styledark">
+                                                                Sign Me Up
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- modal footer start here-->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#">.</a></li>
+                        <li class="irs-reg"><a href="#">Register</a></li>
+                        <li class="irs-search">
+                            <div class="input-group"> <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+          </span>
+                                <input type="text" class="form-control" placeholder="Search...">
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                    </ul>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header-nav style2">
+    <div class="main-header-nav scrollingto-fixed style2">
+        <div class="container">
+            <nav class="navbar navbar-default bootsnav irs-menu-style-two yellow">
+                <div class="container irs-pad-zero">
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="fa fa-bars"></i> </button>
+                        <a class="navbar-brand" href="#brand"><img src="{{ asset('frontend/assets/images/header-logo-l2.png') }}" class="logo" alt="header-logo-l2.png"></a>
+                    </div>
+                    <!-- End Header Navigation -->
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-center">
+                            <li class=""> <a href="{{ path('svt_bassem_homepage') }}" class="dropdown-toggle">Accueil</a>
+                            </li>
+                            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections</a>
+                                <ul class="dropdown-menu">
+                                    {% for section in sections %}
+                                        <li><a href="{{ path('svt_bassem_classe', {'id': section.id}) }}">{{ section.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+
+                            </li>
+                            <li class="dropdown"> <a class="active" href="{{ path('svt_bassem_contact') }}">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<section class="irs-ip-breadcrumbs irs-bc-teacher">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3 text-center">
+                <h1 class="irs-bc-title">Contactez nous</h1>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="irs-ip-brdcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-right irs-bb-right">
+                    <ul class="list-inline irs-brdcrmb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#"> > </a></li>
+                        <li><a class="active" href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div>
+        {% for flashMessage in app.session.flashbag.get('msg') %}
+            <br><br>
+            <div class='alert alert-success alert-dismissable arabe'>
+                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;
+                </button>
+                {{ flashMessage }}
+            </div>
+
+        {% endfor %}
+    </div>
+
+    <!-- Breadcrumbs html -->
+    <section class="irs-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 irs-padr-zero">
+                    <div class="irs-contact-detail">
+                        <h3 class="irs-contact-title">Nos locaux</h3>
+                        <ul class="irs-contect-address">
+                            <li>Rue de Bizerte</li>
+                            <li>Bab El Khadra, Bab Souika</li>
+                            <li>1075 Tunis, Tunisie</li>
+                            <li>tel : 20965188</li>
+                        </ul>
+                        <h3 class="irs-cf-title">Contact Form</h3>
+                        <form class="irs-contact-formed" action="{{ path('svt_bassem_contact_trait') }}">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" id="exampleInputtext" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="objet" id="exampleInputObject" placeholder="Objet">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="mail" id="exampleInputEmail1" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="2" name="message" placeholder="Message"></textarea>
+                            </div>
+                            <input type="submit" class="btn btn-default" value="Contactez nous">
+                        </form>
+                        <div class="irs-courses-td-sngle-dtls irs-cfp">
+                            <div class="irs-social-icon-td-sngle-dtls">
+                                <h3 class="irs-cp-follow">Suivez Bassem Hezzi</h3>
+                                <ul class="list-inline irs-courses-tdetls style2">
+                                    <li class="fbok"><a href="https://www.facebook.com/SVT-BassemHezzi-1902376139988278/"><span class="flaticon-social-3"></span> </a></li>
+                                    <li class="twtr"><a href="#"><span class="flaticon-social-4"></span> </a></li>
+                                    <li class="gplus"><a href="#"><span class="flaticon-social-media-1"></span> </a></li>
+                                    <li class="linkdin"><a href="#"><span class="flaticon-linkedin-logo"></span> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 irs-padl-zero">
+                    <div class="irs-googel-map">
+                        <div class="irt-google-map">
+                            <div class="" id="map-location" style="height: 740px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="irs-social-media">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-sm-6 col-md-6 text-right style2">
+                    <h3 class="irs-social-media-ttl">Réseaux sociaux:</h3>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6">
+                    <div class="irs-sm-details">
+                        <ul class="list-inline">
+                            <li><a href="#"><span class="flaticon-social-3"></span></a></li>
+                            <li><a href="#"><span class="flaticon-social-4"></span></a></li>
+                            <li><a href="#"><span class="flaticon-social-1"></span></a></li>
+                            <li><a href="#"><span class="flaticon-social-media"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <!-- Google Map Javascript Codes -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzVzAgND_8a4qMaSOM0IwN6qS9y5I57No"></script>
+    <script src="{{ asset('frontend/assets/js/googlemaps.js') }}"></script>
+    <!-- Custom script for all pages -->
+    <script type="text/javascript" src="{{ asset('frontend/assets/js/script.js') }}"></script>
+    <!-- Google Map Javascript Codes AIzaSyCzVzAgND_8a4qMaSOM0IwN6qS9y5I57No  -->
+    {#<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzVzAgND_8a4qMaSOM0IwN6qS9y5I57No"></script>
+    <script src="{{ asset('frontend/assets/js/gmaps.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/googlemaps.js') }}"></script>#}
+{% endblock %}

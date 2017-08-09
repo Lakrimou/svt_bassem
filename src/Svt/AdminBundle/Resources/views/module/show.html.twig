@@ -1,0 +1,78 @@
+{% extends '::layoutAdmin.html.twig' %}
+{% block stylesheetJavascript %}
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block body %}
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <section id="content">
+
+        <div class="page page-forms-wizard">
+
+            <div class="pageheader">
+
+                <h2>Gestion des sections <span>// ajout modification et suppression des modules</span></h2>
+
+                <div class="page-bar">
+
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a href="index.html"><i class="fa fa-home"></i> Svt Bassem</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <section class="tile">
+                <div class="row" style="padding: 15px;">
+                    <div class="col-lg-12">
+                        <h2 class="text-center">Administration : <strong>Détails de ce modules</strong></h2>
+                        <br/>
+                        <h1>Cour</h1>
+
+                        <table class="table table-responsive table-bordered table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ module.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Moduleename</th>
+                                <td>{{ module.moduleeName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Moduleedescription</th>
+                                <td>{{ module.moduleeDescription }}</td>
+                            </tr>
+                            <tr>
+                                <th>Datecreationmodulese</th>
+                                <td>{% if module.dateCreationModule %}{{ module.dateCreationModule|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>ImgModule</th>
+                                <td>{{ module.imgModule }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <ul>
+                            <li>
+                                <a href="{{ path('moduleSvt_index') }}">Back to the list</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('moduleSvt_edit', { 'id': module.id }) }}">Edit</a>
+                            </li>
+                            <li>
+                                {{ form_start(delete_form) }}
+                                <input type="submit" value="Delete">
+                                {{ form_end(delete_form) }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+{% endblock %}

@@ -1,3 +1,7 @@
+#svt_bassem_admin_section:
+#    resource: "@SvtBassemBundle/Resources/config/routing/section.yml"
+ #   prefix:   /admin_section
+
 svt_bassem_homepage:
     path:     /
     defaults: { _controller: SvtBassemBundle:Admin:index }
@@ -16,7 +20,7 @@ svt_bassem_classeSpec:
         idSection: \d
 
 svt_bassem_cours:
-    path:    /classe/{classeName}/{id}/{sectionName}/{idSection}/{categoryName}/{categoryId}
+    path:    /classe/{classeName}/{id}/{sectionName}/{idSection}/{moduleeName}/{moduleId}
     defaults: { _controller: SvtBassemBundle:Admin:cours }
     requirements:
         id: \d
@@ -25,11 +29,19 @@ svt_bassem_cours:
 
 
 svt_bassem_viewCourse:
-    path:    /cours/{id}/{idSection}/{categoryId}/{coursId}
+    path:    /cours/{id}/{idSection}/{coursId}/{moduleId}
     defaults: { _controller: SvtBassemBundle:Admin:viewCours }
     requirements:
         id: \d
         idSection: \d
         categoryId: \d
         coursId: \d
+
+svt_bassem_contact:
+    path:    /contact
+    defaults: { _controller: SvtBassemBundle:Admin:contact }
+
+svt_bassem_contact_trait:
+    path:    /contact_trait
+    defaults: { _controller: SvtBassemBundle:Admin:contactTrait }
 

@@ -1,0 +1,130 @@
+{% extends '::layoutAdmin.html.twig' %}
+{% block stylesheetJavascript %}
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace( 'editor1' );
+    </script>
+{% endblock %}
+{% block body %}
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <section id="content">
+
+        <div class="page page-forms-wizard">
+
+            <div class="pageheader">
+
+                <h2>Gestion des cours <span>// ajout modification et suppression des cours</span></h2>
+
+                <div class="page-bar">
+
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a href="index.html"><i class="fa fa-home"></i> Svt Bassem</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <section class="tile">
+                <div class="row" style="padding: 15px;">
+                    <div class="col-lg-12">
+                        <h2 class="text-center">Administration : <strong>Ajouter un cours</strong></h2>
+                        <br/>
+                        <h1>Listecour creation</h1>
+
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <input type="submit" value="Create" />
+                        {{ form_end(form) }}
+
+                        <ul>
+                            <li>
+                                <a href="{{ path('listecours_index') }}">Back to the list</a>
+                            </li>
+                        </ul></div></div></section></div></section>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    {% block vendorJavascript %}
+        {#<script>
+            var $section = $('#svt_bassembundle_cours_section');
+            // When sport gets selected ...
+            $section.change(function () {
+                console.log("akrem");
+                // ... retrieve the corresponding form.
+                var $form = $(this).closest('form');
+                // Simulate form data, but only include the selected sport value.
+                var data = {};
+                data[$section.attr('name')] = $section.val();
+                // Submit data via AJAX to the form's action path.
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: $form.attr('method'),
+                    data: data,
+                    success: function (html) {
+                        // Replace current position field ...
+                        $('#svt_bassembundle_cours_classe').replaceWith(
+                            // ... with the returned one from the AJAX response.
+                            $(html).find('#svt_bassembundle_cours_classe')
+                        );
+                        // Position field now displays the appropriate positions.
+                    }
+                });
+            });
+        </script>#}
+        <script>
+            $(function(){
+                $("#svt_bassembundle_cours_section").change(function(){
+                    var data = {
+                        section_id: $(this).val()
+                    };
+
+                    $.ajax({
+                        type: 'post',
+                        url: '{{ path("select_classes") }}',
+                        data: data,
+                        success: function(data) {
+                            var $province_selector = $('#svt_bassembundle_cours_classe');
+
+                            $province_selector.html('<option>Classe</option>');
+                            console.log(data.data.length);
+                            for (var i=0, total = data.data.length; i < total; i++) {
+                                $province_selector.append('<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>');
+                            }
+
+                            $('#svt_bassembundle_cours_module').html("<option>Classe</option>");
+                        }
+                    });
+                });
+
+                $("#svt_bassembundle_cours_classe").change(function(){
+                    var data = {
+                        classe_id: $(this).val()
+                    };
+
+                    $.ajax({
+                        type: 'post',
+                        url: '{{ path("select_modules") }}',
+                        data: data,
+                        success: function(data) {
+                            var $city_selector = $('#svt_bassembundle_cours_module');
+
+                            $city_selector.html('<option>Module</option>');
+                            console.log(data.data);
+                            for (var i=0, total = data.data.length; i < total; i++) {
+                                $city_selector.append('<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>');
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+
+    {% endblock %}
+{% endblock %}

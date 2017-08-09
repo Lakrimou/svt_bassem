@@ -2,9 +2,139 @@ svt_bassem_admin_homepage:
     path:    /
     defaults: { _controller: SvtAdminBundle:Administration:index }
 
-svt_bassem_ajouterCours:
-    path:    /ajouterCours
-    defaults: { _controller: SvtAdminBundle:Administration:ajouterCours }
+svt_bassem_ajouterModule:
+    path:    /ajouterModule
+    defaults: { _controller: SvtAdminBundle:Administration:ajouterModule }
+
+admin_show:
+    path:     /{id}/show
+    defaults: { _controller: "SvtAdminBundle:Classe:show" }
+    methods:  GET
+
+admin_index:
+    path:     /classes
+    defaults: { _controller: "SvtAdminBundle:Classe:index" }
+    methods:  GET
+
+admin_new:
+    path:     /new
+    defaults: { _controller: "SvtAdminBundle:Classe:new" }
+    methods:  [GET, POST]
+
+admin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SvtAdminBundle:Classe:edit" }
+    methods:  [GET, POST]
+
+admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SvtAdminBundle:Classe:delete" }
+    methods:  DELETE
+    
+admin_section_index:
+    path:     /sections
+    defaults: { _controller: "SvtAdminBundle:Section:index" }
+    methods:  GET
+
+admin_section_show:
+    path:     /{id}/showSection
+    defaults: { _controller: "SvtAdminBundle:Section:show" }
+    methods:  GET
+
+admin_section_new:
+    path:     /newSection
+    defaults: { _controller: "SvtAdminBundle:Section:new" }
+    methods:  [GET, POST]
+
+admin_section_edit:
+    path:     /{id}/editSection
+    defaults: { _controller: "SvtAdminBundle:Section:edit" }
+    methods:  [GET, POST]
+
+admin_section_delete:
+    path:     /{id}/deleteSection
+    defaults: { _controller: "SvtAdminBundle:Section:delete" }
+    methods:  DELETE
+
+moduleSvt_index:
+    path:     /module
+    defaults: { _controller: "SvtAdminBundle:Module:index" }
+    methods:  GET
+
+moduleSvt_show:
+    path:     /{id}/showModule
+    defaults: { _controller: "SvtAdminBundle:Module:show" }
+    methods:  GET
+
+moduleSvt_new:
+    path:     /newModule
+    defaults: { _controller: "SvtAdminBundle:Module:new" }
+    methods:  [GET, POST]
+
+moduleSvt_edit:
+    path:     /{id}/editModule
+    defaults: { _controller: "SvtAdminBundle:Module:edit" }
+    methods:  [GET, POST]
+
+moduleSvt_delete:
+    path:     /{id}/deleteModule
+    defaults: { _controller: "SvtAdminBundle:Module:delete" }
+    methods:  DELETE
+
+listecours_index:
+    path:     /list_cours
+    defaults: { _controller: "SvtAdminBundle:Cours:index" }
+    methods:  GET
+
+listecours_show:
+    path:     /{id}/show_list_cours
+    defaults: { _controller: "SvtAdminBundle:Cours:show" }
+    methods:  GET
+
+listecours_new:
+    path:     /new_list_cours
+    defaults: { _controller: "SvtAdminBundle:Cours:new" }
+    methods:  [GET, POST]
+
+listecours_edit:
+    path:     /{id}/edit_list_cours
+    defaults: { _controller: "SvtAdminBundle:Cours:edit" }
+    methods:  [GET, POST]
+
+listecours_delete:
+    path:     /{id}/delete_list_cours
+    defaults: { _controller: "SvtAdminBundle:Cours:delete" }
+    methods:  DELETE
+
+
+category_index:
+    path:     /categories
+    defaults: { _controller: "SvtAdminBundle:Category:index" }
+    methods:  GET
+
+category_show:
+    path:     /{id}/show_category
+    defaults: { _controller: "SvtAdminBundle:Category:show" }
+    methods:  GET
+
+category_new:
+    path:     /new_category
+    defaults: { _controller: "SvtAdminBundle:Category:new" }
+    methods:  [GET, POST]
+
+category_edit:
+    path:     /{id}/edit_category
+    defaults: { _controller: "SvtAdminBundle:Category:edit" }
+    methods:  [GET, POST]
+
+category_delete:
+    path:     /{id}/delete_category
+    defaults: { _controller: "SvtAdminBundle:Category:delete" }
+    methods:  DELETE
+
+
+
+
 
 svt_bassem_ajouterSerie:
     path:    /ajouterSerie
@@ -14,9 +144,9 @@ svt_bassem_ajouterExamen:
     path:    /ajouterExamen
     defaults: { _controller: SvtBassemBundle:Admin:ajouterExamen }
 
-svt_bassem_modifierCours:
-    path:    /modifierCours/{id}
-    defaults: { _controller: SvtBassemBundle:Admin:modifierCours }
+svt_bassem_modifierModule:
+    path:    /modifierModule/{id}
+    defaults: { _controller: SvtBassemBundle:Admin:modifierModule }
 
 svt_bassem_modifierSerie:
     path:    /modifierSerie/{id}
@@ -25,3 +155,14 @@ svt_bassem_modifierSerie:
 svt_bassem_modifierExamen:
     path:    /modifierExamen/{id}
     defaults: { _controller: SvtBassemBundle:Admin:modifierExamen }
+
+select_classes:
+    path:     /classes
+    defaults: { _controller: "SvtAdminBundle:Cours:classes" }
+
+
+select_modules:
+    path:     /modules
+    defaults: { _controller: "SvtAdminBundle:Cours:modules" }
+
+

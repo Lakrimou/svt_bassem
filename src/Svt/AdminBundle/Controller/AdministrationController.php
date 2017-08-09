@@ -3,7 +3,7 @@
 namespace Svt\AdminBundle\Controller;
 
 use Svt\BassemBundle\Entity\ListeCours;
-use Svt\BassemBundle\Form\ListeCoursType;
+use Svt\BassemBundle\Form\CoursType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +19,7 @@ class AdministrationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $sections = $em->getRepository('SvtBassemBundle:Section')->findAll();
         $listeCours = new ListeCours();
-        $form = $this->get('form.factory')->create(ListeCoursType::class, $listeCours);
+        $form = $this->get('form.factory')->create(CoursType::class, $listeCours);
         if($request->isMethod('POST'))
         {
             $form->handleRequest($request);

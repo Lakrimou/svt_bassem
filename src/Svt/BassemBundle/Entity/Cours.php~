@@ -3,6 +3,7 @@
 namespace Svt\BassemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cours
@@ -24,23 +25,56 @@ class Cours
     /**
      * @var string
      *
-     * @ORM\Column(name="CourseName", type="string", length=255)
+     * @ORM\Column(name="nomCours", type="string", length=255, nullable=true)
      */
-    private $courseName;
+    private $nomCours;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CourseDescription", type="text")
+     * @ORM\Column(name="descriptionCours", type="string", length=255, nullable=true)
      */
-    private $courseDescription;
+    private $descriptionCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenuCours", type="text", nullable=true)
+     */
+    private $contenuCours;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreationCourse", type="datetime")
+     * @ORM\Column(name="dateCreationCours", type="datetime", nullable=true)
      */
-    private $dateCreationCourse;
+    private $dateCreationCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="autheurCours", type="string", length=255, nullable=true)
+     */
+    private $autheurCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgCours", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="This file is not a valid image")
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/gif", "image/jpg"})
+     */
+    private $imgCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pdfUrlCours", type="string", length=255, nullable=true)
+     *
+     * @Assert\NotBlank(message="svp! veuillez mettre un fichier pdf")
+     * @Assert\File(mimeTypes={"application/pdf"})
+     */
+    private $pdfUrlCours;
 
     /**
      * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Section", cascade={"persist"})
@@ -54,25 +88,20 @@ class Cours
      */
     private $classe;
 
+
     /**
      * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Category", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imgUrlCours", length=255, type="string", nullable=true)
-     */
-    private $imgUrlCours;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="imgAltCours", length=255, type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Module", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $imgAltCours;
+    private $module;
+
 
     /**
      * Get id
@@ -85,75 +114,171 @@ class Cours
     }
 
     /**
-     * Set courseName
+     * Set nomCours
      *
-     * @param string $courseName
+     * @param string $nomCours
      *
      * @return Cours
      */
-    public function setCourseName($courseName)
+    public function setNomCours($nomCours)
     {
-        $this->courseName = $courseName;
+        $this->nomCours = $nomCours;
 
         return $this;
     }
 
     /**
-     * Get courseName
+     * Get nomCours
      *
      * @return string
      */
-    public function getCourseName()
+    public function getNomCours()
     {
-        return $this->courseName;
+        return $this->nomCours;
     }
 
     /**
-     * Set courseDescription
+     * Set descriptionCours
      *
-     * @param string $courseDescription
+     * @param string $descriptionCours
      *
      * @return Cours
      */
-    public function setCourseDescription($courseDescription)
+    public function setDescriptionCours($descriptionCours)
     {
-        $this->courseDescription = $courseDescription;
+        $this->descriptionCours = $descriptionCours;
 
         return $this;
     }
 
     /**
-     * Get courseDescription
+     * Get descriptionCours
      *
      * @return string
      */
-    public function getCourseDescription()
+    public function getDescriptionCours()
     {
-        return $this->courseDescription;
+        return $this->descriptionCours;
     }
 
     /**
-     * Set dateCreationCourse
+     * Set contenuCours
      *
-     * @param \DateTime $dateCreationCourse
+     * @param string $contenuCours
      *
      * @return Cours
      */
-    public function setDateCreationCourse($dateCreationCourse)
+    public function setContenuCours($contenuCours)
     {
-        $this->dateCreationCourse = $dateCreationCourse;
+        $this->contenuCours = $contenuCours;
 
         return $this;
     }
 
     /**
-     * Get dateCreationCourse
+     * Get contenuCours
+     *
+     * @return string
+     */
+    public function getContenuCours()
+    {
+        return $this->contenuCours;
+    }
+
+    /**
+     * Set dateCreationCours
+     *
+     * @param \DateTime $dateCreationCours
+     *
+     * @return Cours
+     */
+    public function setDateCreationCours($dateCreationCours)
+    {
+        $this->dateCreationCours = $dateCreationCours;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreationCours
      *
      * @return \DateTime
      */
-    public function getDateCreationCourse()
+    public function getDateCreationCours()
     {
-        return $this->dateCreationCourse;
+        return $this->dateCreationCours;
+    }
+
+    /**
+     * Set autheurCours
+     *
+     * @param string $autheurCours
+     *
+     * @return Cours
+     */
+    public function setAutheurCours($autheurCours)
+    {
+        $this->autheurCours = $autheurCours;
+
+        return $this;
+    }
+
+    /**
+     * Get autheurCours
+     *
+     * @return string
+     */
+    public function getAutheurCours()
+    {
+        return $this->autheurCours;
+    }
+
+    /**
+     * Set imgCours
+     *
+     * @param string $imgCours
+     *
+     * @return Cours
+     */
+    public function setImgCours($imgCours)
+    {
+        $this->imgCours = $imgCours;
+
+        return $this;
+    }
+
+    /**
+     * Get imgCours
+     *
+     * @return string
+     */
+    public function getImgCours()
+    {
+        return $this->imgCours;
+    }
+
+    /**
+     * Set pdfUrlCours
+     *
+     * @param string $pdfUrlCours
+     *
+     * @return Cours
+     */
+    public function setPdfUrlCours($pdfUrlCours)
+    {
+        $this->pdfUrlCours = $pdfUrlCours;
+
+        return $this;
+    }
+
+    /**
+     * Get pdfUrlCours
+     *
+     * @return string
+     */
+    public function getPdfUrlCours()
+    {
+        return $this->pdfUrlCours;
     }
 
     /**
@@ -226,5 +351,29 @@ class Cours
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set module
+     *
+     * @param \Svt\BassemBundle\Entity\Module $module
+     *
+     * @return Cours
+     */
+    public function setModule(\Svt\BassemBundle\Entity\Module $module)
+    {
+        $this->module = $module;
+
+        return $this;
+    }
+
+    /**
+     * Get module
+     *
+     * @return \Svt\BassemBundle\Entity\Module
+     */
+    public function getModule()
+    {
+        return $this->module;
     }
 }

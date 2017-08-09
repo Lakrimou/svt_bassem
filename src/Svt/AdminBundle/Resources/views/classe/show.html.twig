@@ -1,0 +1,157 @@
+{% extends "::layoutAdmin.html.twig" %}
+{% block stylesheetJavascript %}
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block body %}
+    <section id="content">
+
+        <div class="page page-forms-wizard">
+
+            <div class="pageheader">
+
+                <h2>Gestion des classes <span>// ajout modification et suppression des classes</span></h2>
+
+                <div class="page-bar">
+
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <a href="index.html"><i class="fa fa-home"></i> Svt Bassem</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <section class="tile">
+                <div class="row" style="padding: 15px;">
+                    <div class="col-lg-12">
+                        <h1>Classe</h1>
+
+                        <table class="table table-responsive table-bordered table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ classe.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ classe.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ classe.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Datecreationclasse</th>
+                                <td>{% if classe.dateCreationClasse %}{{ classe.dateCreationClasse|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Imgurlclasse</th>
+                                <td>{{ classe.imgClasse }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <ul>
+                            <li>
+                                <a href="{{ path('admin_index') }}">Back to the list</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_edit', { 'id': classe.id }) }}">Edit</a>
+                            </li>
+                            <li>
+                                {{ form_start(delete_form) }}
+                                <input type="submit" value="Delete">
+                                {{ form_end(delete_form) }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+{% endblock %}
+{% block vendorJavascript %}
+    <script src="{{ asset('assets/js/vendor/parsley/parsley.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/form-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script>{{ asset('assets/js/main.js') }}</script>
+    <script>
+        $(window).load(function () {
+
+            $('#rootwizard').bootstrapWizard({
+                onTabShow: function (tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    console.log('____Total_____ ' + $total);
+                    var $current = index + 1;
+                    console.log('_______$current_____ ' + $current);
+
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if ($current >= $total) {
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .finish').show();
+                        $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                    } else {
+                        $('#rootwizard').find('.pager .next').show();
+                        $('#rootwizard').find('.pager .finish').hide();
+                    }
+
+                },
+
+                onNext: function (tab, navigation, index) {
+
+                    var form = $('form[name="step' + index + '"]');
+                    console.log('______formOnNext ______ ' + form);
+                    console.log('______formOnNextIndex ______ ' + index);
+
+                    form.parsley().validate();
+
+                    if (!form.parsley().isValid()) {
+                        return false;
+                    }
+
+                },
+
+                onTabClick: function (tab, navigation, index) {
+
+                    var form = $('form[name="step' + (index + 1) + '"]');
+                    console.log('______formOnTabClick ______ ' + form)
+                    form.parsley().validate();
+
+                    if (!form.parsley().isValid()) {
+                        return false;
+                    }
+
+                }
+
+            });
+
+        });
+    </script>
+    <!--/ Page Specific Scripts -->
+
+
+
+
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] =
+                    function () {
+                        (b[l].q = b[l].q || []).push(arguments)
+                    });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    </script>
+{% endblock %}
+
+

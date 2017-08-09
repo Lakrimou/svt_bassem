@@ -57,32 +57,6 @@ class Category
     private $imgUrl;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="imgAlt", type="string", length=255, nullable=true)
-     */
-    private $imgAlt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pdfUrl", type="string", length=255, nullable=true)
-     */
-    private $pdfUrl;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Section", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $section;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Classe", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $classe;
-
-    /**
      * Get id
      *
      * @return int
@@ -212,52 +186,4 @@ class Category
         return $this->imgUrl;
     }
 
-    /**
-     * Set imgAlt
-     *
-     * @param string $imgAlt
-     *
-     * @return Category
-     */
-    public function setImgAlt($imgAlt)
-    {
-        $this->imgAlt = $imgAlt;
-
-        return $this;
-    }
-
-    /**
-     * Get imgAlt
-     *
-     * @return string
-     */
-    public function getImgAlt()
-    {
-        return $this->imgAlt;
-    }
-
-    /**
-     * Set pdfUrl
-     *
-     * @param string $pdfUrl
-     *
-     * @return Category
-     */
-    public function setPdfUrl($pdfUrl)
-    {
-        $this->pdfUrl = $pdfUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get pdfUrl
-     *
-     * @return string
-     */
-    public function getPdfUrl()
-    {
-        return $this->pdfUrl;
-    }
-    
 }

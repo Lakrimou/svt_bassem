@@ -1,78 +1,217 @@
 {% extends "::base.html.twig" %}
+{% block meta %}
+    <meta name="description" content="Vous trouverez ici, la Liste des cours, des résumés et des exercices corrigées" />
+{% endblock %}
+{% block title %}{{ parent() }} | Cours{% endblock %}
 {% block body %}
-    {{ include('SvtBassemBundle:Admin:nav.html.twig') }}
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img class="first-slide" src="{{ asset('images/slider_a.jpg') }}" alt="First slide">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Examens Baccalauréat</h1>
-                        <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+    <div class="irs-header-topped">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 clearfix">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4 irs-padl-zero irs-pl-fftn" style="float: right;">
+                            <div class="irs-welcm-ht">
+                                <p class="irs-welcntxt"><i class="fa fa-phone"></i> Plus de question? Contactez nous <strong>
+                                        (+216) 20965188 </strong></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4"style="float: right;">
+                            <div class="irs-welcm-ht">
+                                <p class="irs-welcntxt"><i class="fa fa-map-marker"></i> Bassem Hezzi Bab khadhra Tunis, Tunisie</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <img class="second-slide" src="{{ asset('images/slider_b.jpg') }}" alt="Second slide">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Résumés des cours</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="third-slide" src="{{ asset('images/slider_c.png') }}" alt="Third slide">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Exercices et séries corrigées</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 clearfix">
+                    <div class="irs-log-reg">
+                        {#<ul class="list-inline">
+                            <li><a href="#">
+                                    <div data-toggle="modal" data-target=".bs-example-modal-lg"
+                                         data-whatever="@mdo">Login
+                                    </div>
+                                </a>
+                                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title text-center" id="exampleModalLabel">Login or
+                                                    Register</h4>
+                                                <p class="irs-sign-reg-para text-center">Sign in or register today
+                                                    in oorder to have access to all our courses or purchase new
+                                                    ones.</p>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <form class="irs-login-form">
+                                                            <h3>Login <span class="flaticon-padlock"></span></h3>
+                                                            <p>Enter username and password to login:</p>
+                                                            <div class="form-group">
+                                                                <input type="email" class="form-control" id="email"
+                                                                       placeholder="Email">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control"
+                                                                       placeholder="Password">
+                                                            </div>
+                                                            <button type="submit"
+                                                                    class="btn btn-default irs-button-styledark">
+                                                                Login to account
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <form class="irs-reg-form">
+                                                            <h3>Register <span class="flaticon-key"></span></h3>
+                                                            <p>Join our community today:</p>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                       id="exampleInputNamex"
+                                                                       placeholder="First Name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control"
+                                                                       id="exampleInputNamexx"
+                                                                       placeholder="Last Name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="email" class="form-control"
+                                                                       id="exampleInputEmailx" placeholder="Email">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control"
+                                                                       placeholder="Password">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control"
+                                                                       placeholder="Repeat password">
+                                                            </div>
+                                                            <div class="form-group text-center">
+                                                                <button type="submit"
+                                                                        class="btn btn-default irs-button-styledark">
+                                                                    Sign Me Up
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- modal footer start here-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="#">.</a></li>
+                            <li class="irs-reg"><a href="#">Register</a></li>
+                            <li class="irs-search">
+                                <div class="input-group"> <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+              </span>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                </div>
+                                <!-- /input-group -->
+                            </li>
+                        </ul>#}
                     </div>
                 </div>
             </div>
         </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div><!-- /.carousel -->
+    </div>
+    <div class="header-nav style2">
+        <div class="main-header-nav scrollingto-fixed style2">
+            <div class="container">
+                <nav class="navbar navbar-default bootsnav irs-menu-style-two yellow">
+                    <div class="container irs-pad-zero">
+                        <!-- Start Header Navigation -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="fa fa-bars"></i> </button>
+                            <a class="navbar-brand" href="#brand"><img src="{{ asset('frontend/assets/images/header-logo-l2.png') }}" class="logo" alt="header-logo-l2.png"></a>
+                        </div>
+                        <!-- End Header Navigation -->
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="navbar-menu">
+                            <ul class="nav navbar-nav navbar-center">
+                                <li class=""> <a href="{{ path('svt_bassem_homepage') }}" class="">Accueil</a>
+                                </li>
+                                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections</a>
+                                    <ul class="dropdown-menu">
+                                        {% for section in sections %}
+                                            <li><a href="{{ path('svt_bassem_classe', {'id': section.id}) }}">{{ section.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown"> <a href="{{ path('svt_bassem_contact') }}">Contact</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section class="irs-ip-breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 text-center">
+                    <h1 class="irs-bc-title">Cours</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="irs-ip-brdcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-left irs-bb-left">
+                    <ul class="list-inline irs-brdcrmb">
+                        <li><a href="#">Cours</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="container marketing cours">
 
         <!-- Three columns of text below the carousel -->
         <div class="row">
-            {% for cour in cours %}
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="themes section">
-                        <img class="text-center img-circle" src="images/cours.jpg" alt="Generic placeholder image" width="140" height="140">
-                        <h2 class="center-block">{{ cour.CourseName }}</h2>
-                        <p>{{ cour.CourseDescription }}</p>
-                        <p class="centerBtn"><a class="btn btn-primary" href="{{ path('svt_bassem_viewCourse', {'id':classe.id, 'idSection':section.id, 'categoryId':category.id, 'coursId':cour.id}) }}" role="button">Plus de détails &raquo;</a></p>
-                    </div>
-                </div><!-- /.col-lg-4 col-md-4 col-sm-12 col-xs-12 -->
-            {% endfor %}
-        </div>
-    <footer>
-        <p class="text-center">Propriétaire de site : {{ copyright }} &middot;</p>
-        <div>
-            <img src="" alt=""/>
-            <img src="" alt=""/>
-            <img src="" alt=""/>
-            <img src="" alt=""/>
-        </div>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Développé par {{ developper }}, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
+            <h2 class="text-center">Classe : <strong>{{ classe.name }}</strong></h2>
+            <h2 class="text-center">Section : <strong>{{ section.name }}</strong></h2>
+            <h2 class="text-center">Thème : <strong>{{ module.moduleeName }}</strong></h2>
+            <br/>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Catégorie</th>
+                    <th>Titre de document</th>
+                    <th>Auteur</th>
+                    <th>Description</th>
+                    <th>Date de création</th>
+                    <th>Téléchargement</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cour in cours %}
+                    <tr>
+                        <td>
+
+                                <i class="fa fa-book fa"></i>
+
+
+                        </td>
+                        <td>{{ cour.category.nameCategory }}</td>
+                        <td>{{ cour.nomCours }}</td>
+                        <td>{{ cour.autheurCours }}</td>
+                        <td>{{ cour.descriptionCours }}</td>
+                        <td>{{ cour.dateCreationCours|date('d/m/Y') }}</td>
+                        <td><a href="{{ asset('pdfs/'~cour.pdfUrlCours) }}">{{ cour.pdfUrlCours }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div><br/></div>
 {% endblock %}

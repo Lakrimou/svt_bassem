@@ -3,6 +3,7 @@
 namespace Svt\BassemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Section
@@ -45,16 +46,16 @@ class Section
     /**
      * @var string
      *
-     * @ORM\Column(name="imgUrlSection", type="string", nullable=true)
+     * @ORM\Column(name="imgSection", type="string", nullable=true, length=255)
+     * @Assert\NotBlank(message="This file is not a valid image")
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/gif", "image/jpg"})
      */
-    private $imgUrlSection;
+    private $imgSection;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="imgAltSection", type="string", nullable=true)
+     * @ORM\OneToMany(targetEntity="Svt\BassemBundle\Entity\Classe", mappedBy="section")
      */
-    private $imgAltSection;
+    private $classes;
 
     /**
      * Get id
@@ -137,52 +138,70 @@ class Section
     {
         return $this->date;
     }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->classes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set imgUrlSection
+     * Add class
      *
-     * @param string $imgUrlSection
+     * @param \Svt\BassemBundle\Entity\Section $class
      *
      * @return Section
      */
-    public function setImgUrlSection($imgUrlSection)
+    public function addClass(\Svt\BassemBundle\Entity\Section $class)
     {
-        $this->imgUrlSection = $imgUrlSection;
+        $this->classes[] = $class;
 
         return $this;
     }
 
     /**
-     * Get imgUrlSection
+     * Remove class
      *
-     * @return string
+     * @param \Svt\BassemBundle\Entity\Section $class
      */
-    public function getImgUrlSection()
+    public function removeClass(\Svt\BassemBundle\Entity\Section $class)
     {
-        return $this->imgUrlSection;
+        $this->classes->removeElement($class);
     }
 
     /**
-     * Set imgAltSection
+     * Get classes
      *
-     * @param string $imgAltSection
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClasses()
+    {
+        return $this->classes;
+    }
+
+    /**
+     * Set imgSection
+     *
+     * @param string $imgSection
      *
      * @return Section
      */
-    public function setImgAltSection($imgAltSection)
+    public function setImgSection($imgSection)
     {
-        $this->imgAltSection = $imgAltSection;
+        $this->imgSection = $imgSection;
 
         return $this;
     }
 
     /**
-     * Get imgAltSection
+     * Get imgSection
      *
      * @return string
      */
-    public function getImgAltSection()
+    public function getImgSection()
     {
-        return $this->imgAltSection;
+        return $this->imgSection;
     }
 }

@@ -3,6 +3,7 @@
 namespace Svt\BassemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Classe
@@ -43,24 +44,20 @@ class Classe
     private $dateCreationClasse;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Section", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Section", inversedBy="classes")
+     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
      */
     private $section;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="imgUrlClasse", type="string", nullable=true)
+     * @ORM\Column(name="imgClasse", type="string", nullable=true, length=255)
+     * @Assert\NotBlank(message="This file is not a valid image")
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/gif", "image/jpg"})
      */
-    private $imgUrlClasse;
+    private $imgClasse;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imgAltClasse", type="string", nullable=true)
-     */
-    private $imgAltClasse;
 
     /**
      * Get id
@@ -143,7 +140,31 @@ class Classe
     {
         return $this->dateCreationClasse;
     }
+        
 
+    /**
+     * Set imgClasse
+     *
+     * @param string $imgClasse
+     *
+     * @return Classe
+     */
+    public function setImgClasse($imgClasse)
+    {
+        $this->imgClasse = $imgClasse;
+
+        return $this;
+    }
+
+    /**
+     * Get imgClasse
+     *
+     * @return string
+     */
+    public function getImgClasse()
+    {
+        return $this->imgClasse;
+    }
 
     /**
      * Set section
@@ -152,7 +173,7 @@ class Classe
      *
      * @return Classe
      */
-    public function setSection(\Svt\BassemBundle\Entity\Section $section)
+    public function setSection(\Svt\BassemBundle\Entity\Section $section = null)
     {
         $this->section = $section;
 
@@ -167,53 +188,5 @@ class Classe
     public function getSection()
     {
         return $this->section;
-    }
-
-    /**
-     * Set imgUrlClasse
-     *
-     * @param string $imgUrlClasse
-     *
-     * @return Classe
-     */
-    public function setImgUrlClasse($imgUrlClasse)
-    {
-        $this->imgUrlClasse = $imgUrlClasse;
-
-        return $this;
-    }
-
-    /**
-     * Get imgUrlClasse
-     *
-     * @return string
-     */
-    public function getImgUrlClasse()
-    {
-        return $this->imgUrlClasse;
-    }
-
-    /**
-     * Set imgAltClasse
-     *
-     * @param string $imgAltClasse
-     *
-     * @return Classe
-     */
-    public function setImgAltClasse($imgAltClasse)
-    {
-        $this->imgAltClasse = $imgAltClasse;
-
-        return $this;
-    }
-
-    /**
-     * Get imgAltClasse
-     *
-     * @return string
-     */
-    public function getImgAltClasse()
-    {
-        return $this->imgAltClasse;
     }
 }

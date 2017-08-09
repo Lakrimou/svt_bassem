@@ -1,0 +1,472 @@
+{% extends '::layoutAdmin.html.twig' %}
+{% block stylesheetJavascript %}
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block body %}
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+<section id="content">
+
+    <div class="page page-forms-wizard">
+
+        <div class="pageheader">
+
+            <h2>Gestion des catégories <span>// ajout modification et suppression des categories</span></h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="index.html"><i class="fa fa-home"></i> Svt Bassem</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <section class="tile">
+            <div class="row" style="padding: 15px;">
+                <div class="col-lg-12">
+                    <h2 class="text-center">Administration : <strong>Ajouter une categorie</strong></h2>
+                    <br/>
+    <h1>Category</h1>
+
+    <table class="table table-bordered table-responsive table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Namecategory</th>
+                <td>{{ category.nameCategory }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ category.author }}</td>
+            </tr>
+            <tr>
+                <th>Datecreationcategory</th>
+                <td>{% if category.dateCreationCategory %}{{ category.dateCreationCategory|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Categorycontent</th>
+                <td>{{ category.CategoryContent }}</td>
+            </tr>
+            <tr>
+                <th>Imgurl</th>
+                <td>{{ category.imgUrl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('category_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('category_edit', { 'id': category.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul></div></div></section></div></section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+namespace Svt\BassemBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Cours
+ *
+ * @ORM\Table(name="cours)
+ * @ORM\Entity(repositoryClass="Svt\BassemBundle\Repository\CoursRepository")
+ */
+class Cours
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomCours", type="string", length=255)
+     */
+    private $nomCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descriptionCours", type="string", length=255)
+     */
+    private $descriptionCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ContenuCours", type="text", nullable=true)
+     */
+    private $contenuCours;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreationCours", type="datetime")
+     */
+    private $dateCreationCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="autheurCours", type="string", length=255)
+     */
+    private $autheurCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imgUrlCours", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="This file is not a valid image")
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/gif", "image/jpg"})
+     */
+    private $imgUrlCours;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pdfUrlCours", type="string", length=255, nullable=true)
+     *
+     * @Assert\NotBlank(message="svp! veuillez mettre un fichier pdf")
+     * @Assert\File(mimeTypes={"application/pdf"})
+     */
+    private $pdfUrlCours;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Section", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $section;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Classe", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Svt\BassemBundle\Entity\Module", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $module;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+
+    public function __construct()
+    {
+        $this->dateCreationCours = new \Datetime();
+}
+
+public function getId()
+{
+return $this->id;
+}
+
+/**
+* Set nomCours
+*
+* @param string $nomCours
+*
+* @return Cours
+*/
+public function setNomCours($nomCours)
+{
+$this->nomCours = $nomCours;
+
+return $this;
+}
+
+/**
+* Get nomCours
+*
+* @return string
+*/
+public function getNomCours()
+{
+return $this->nomCours;
+}
+
+/**
+* Set descriptionCours
+*
+* @param string $descriptionCours
+*
+* @return Cours
+*/
+public function setDescriptionCours($descriptionCours)
+{
+$this->descriptionCours = $descriptionCours;
+
+return $this;
+}
+
+/**
+* Get descriptionCours
+*
+* @return string
+*/
+public function getDescriptionCours()
+{
+return $this->descriptionCours;
+}
+
+/**
+* Set contenuCours
+*
+* @param string $contenuCours
+*
+* @return Cours
+*/
+public function setContenuCours($contenuCours)
+{
+$this->contenuCours = $contenuCours;
+
+return $this;
+}
+
+/**
+* Get contenuCours
+*
+* @return string
+*/
+public function getContenuCours()
+{
+return $this->contenuCours;
+}
+
+/**
+* Set dateCreationCours
+*
+* @param \DateTime $dateCreationCours
+*
+* @return Cours
+*/
+public function setDateCreationCours($dateCreationCours)
+{
+$this->dateCreationCours = $dateCreationCours;
+
+return $this;
+}
+
+/**
+* Get dateCreationCours
+*
+* @return \DateTime
+*/
+public function getDateCreationCours()
+{
+return $this->dateCreationCours;
+}
+
+/**
+* Set autheurCours
+*
+* @param string $autheurCours
+*
+* @return Cours
+*/
+public function setAutheurCours($autheurCours)
+{
+$this->autheurCours = $autheurCours;
+
+return $this;
+}
+
+/**
+* Get autheurCours
+*
+* @return string
+*/
+public function getAutheurCours()
+{
+return $this->autheurCours;
+}
+
+/**
+* Set imgUrlCours
+*
+* @param string $imgUrlCours
+*
+* @return Cours
+*/
+public function setImgUrlCours($imgUrlCours)
+{
+$this->imgUrlCours = $imgUrlCours;
+
+return $this;
+}
+
+/**
+* Get imgUrlCours
+*
+* @return string
+*/
+public function getImgUrlCours()
+{
+return $this->imgUrlCours;
+}
+
+/**
+* Set pdfUrlCours
+*
+* @param string $pdfUrlCours
+*
+* @return Cours
+*/
+public function setPdfUrlCours($pdfUrlCours)
+{
+$this->pdfUrlCours = $pdfUrlCours;
+
+return $this;
+}
+
+/**
+* Get pdfUrlCours
+*
+* @return string
+*/
+public function getPdfUrlCours()
+{
+return $this->pdfUrlCours;
+}
+
+/**
+* Set section
+*
+* @param \Svt\BassemBundle\Entity\Section $section
+*
+* @return Cours
+*/
+public function setSection(\Svt\BassemBundle\Entity\Section $section)
+{
+$this->section = $section;
+
+return $this;
+}
+
+/**
+* Get section
+*
+* @return \Svt\BassemBundle\Entity\Section
+*/
+public function getSection()
+{
+return $this->section;
+}
+
+/**
+* Set classe
+*
+* @param \Svt\BassemBundle\Entity\Classe $classe
+*
+* @return Cours
+*/
+public function setClasse(\Svt\BassemBundle\Entity\Classe $classe)
+{
+$this->classe = $classe;
+
+return $this;
+}
+
+/**
+* Get classe
+*
+* @return \Svt\BassemBundle\Entity\Classe
+*/
+public function getClasse()
+{
+return $this->classe;
+}
+
+/**
+* Set category
+*
+* @param \Svt\BassemBundle\Entity\Category $category
+*
+* @return Cours
+*/
+public function setCategory(\Svt\BassemBundle\Entity\Category $category)
+{
+$this->category = $category;
+
+return $this;
+}
+
+/**
+* Get category
+*
+* @return \Svt\BassemBundle\Entity\Category
+*/
+public function getCategory()
+{
+return $this->category;
+}
+
+/**
+* Set module
+*
+* @param \Svt\BassemBundle\Entity\Module $module
+*
+* @return Cours
+*/
+public function setModule(\Svt\BassemBundle\Entity\Module $module)
+{
+$this->module = $module;
+
+return $this;
+}
+
+/**
+* Get module
+*
+* @return \Svt\BassemBundle\Entity\Module
+*/
+public function getModule()
+{
+return $this->module;
+}
+}
+

@@ -1,0 +1,43 @@
+{% extends '::layoutAdmin.html.twig' %}
+{% block stylesheetJavascript %}
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block body %}
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+<section id="content">
+
+    <div class="page page-forms-wizard">
+
+        <div class="pageheader">
+
+            <h2>Gestion des catégories <span>// ajout modification et suppression des categories</span></h2>
+
+            <div class="page-bar">
+
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="index.html"><i class="fa fa-home"></i> Svt Bassem</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <section class="tile">
+            <div class="row" style="padding: 15px;">
+                <div class="col-lg-12">
+                    <h2 class="text-center">Administration : <strong>Ajouter une categorie</strong></h2>
+                    <br/>
+    <h1>Category creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('category_index') }}">Back to the list</a>
+        </li>
+    </ul></div></div></section></div></section>
+{% endblock %}
